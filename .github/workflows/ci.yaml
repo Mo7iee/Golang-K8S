@@ -1,5 +1,4 @@
 # CICD using GitHub actions
-
 name: CI/CD
 
 on:
@@ -46,7 +45,7 @@ jobs:
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v6
       with:
-        version: v1.61.0   # ✅ supports Go 1.23+
+        version: v1.61.0   
         args: --timeout=5m
   
   push:
@@ -73,7 +72,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/go-web-app:${{ github.run_id }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/goapp:${{ github.run_id }}
 
   update-newtag-in-helm-chart:
     runs-on: ubuntu-latest
